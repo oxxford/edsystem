@@ -3,23 +3,15 @@
     {
       "id": 0,
       "content_type": "page",
-      "comment": "This is teacher content bla bla bla",
+      "comment": "This is a square - a figure with equal edges and angles. Each angle equals 90 degrees.",
       "content": [
         {
           "type": "header",
-          "content": "Awesome math lesson"
-        },
-        {
-          "type": "text",
-          "content": "Today we'll learn how to add two numbers"
+          "content": "Square area"
         },
         {
           "type": "image",
-          "content": "/subjects/literature_4_2019/lesson1/media/sd.jpg"
-        },
-        {
-          "type": "image",
-          "content": "/subjects/literature_4_2019/lesson1/media/e1.jpg"
+          "content": "/subjects/literature_4_2019/lesson1/media/area.jpg"
         }
       ]
     },

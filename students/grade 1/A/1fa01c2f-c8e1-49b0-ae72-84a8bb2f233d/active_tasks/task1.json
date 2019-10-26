@@ -1,1 +1,0 @@
-{"pages": [{"id": 1, "content_type": "test", "learner_type": "visual", "test_type": "single_choice", "question": "2+2=?", "choices": [{"is_correct": true, "content": "4"}, {"is_correct": false, "content": "5"}, {"is_correct": false, "content": "3"}]}]}
