@@ -1,13 +1,45 @@
 from flask import send_file, request, Flask
 from flask_cors import CORS
 from utils import get_speech
+# import CORS
 from personalization import *
-from flask import jsonify
+from flask import jsonify, send_from_directory
 import json
+from flask_socketio import SocketIO, emit, join_room, leave_room, \
+    close_room, rooms, disconnect
+
+from flask_cors import CORS
 import os
+async_mode = None
+
+
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret!'
+socketio = SocketIO(app, async_mode=async_mode)
 CORS(app)
-# export FLASK_RUN_PORT=3000
+
+
+@app.route('/js_files/<path:path>')
+def send_js(path):
+    return send_from_directory('js_files', path)
+
+
+#   SOCKET FUNCTIONS
+
+@socketio.on('canvas_to_server', namespace='/canvas')
+def redirect_canvas(message):
+    emit('canvas_to_teacher',
+         message,
+         broadcast=True)
+
+
+@socketio.on('pagination_to_server', namespace='/pagination')
+def redirect_canvas(message):
+    emit('pagination_to_student',
+         message,
+         broadcast=True)
+
+#      REST FUNCTIONS
 
 
 @app.route('/')
@@ -75,4 +107,5 @@ def get_audio():
 
 if __name__ == '__main__':
     # print(get_speech('We are <> going to win!'))
-    app.run(host='0.0.0.0')
+    # app.run(host='0.0.0.0')
+    socketio.run(app, host='0.0.0.0', debug=True)
