@@ -34,12 +34,22 @@
 These are requests samples that we will implement  (not final system version)
  1. GET lesson content
  2. POST send tasks to students
+ assign all task to certain students based on their learning type
  
  ## Student
  
- 1. GET lesson content (with personalized parameters)
+ 1. GET lesson content (with personalized parameters) - websocket
  2. GET assigned active tasks 
- 3. POST unclear content (mark a certain place on a slide, slide ID)
- 4. POST question  (text and slide ID)
+ GET tasks  | params student_id || alg: parse student info, personalize all task that student is enrolled, 
+ retreive tasks that are in his folder
+ 3. POST unclear content (mark a certain place on a slide, slide ID) - websocket
+ 
+ 4. POST question  (text and slide ID) - websocket 
+ 
+ 
+ ## Types of learners
+ 1 - visual
+ 2 - audio
+ 
  
  
