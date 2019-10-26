@@ -3,6 +3,7 @@
     {
       "id": 0,
       "content_type": "page",
+      "comment": "This is teacher content bla bla bla",
       "content": [
         {
           "type": "header",
@@ -25,6 +26,7 @@
     {
       "id": 1,
       "content_type": "page",
+      "comment": "This is teacher content bla bla bla",
       "content": [
         {
           "type": "header",
