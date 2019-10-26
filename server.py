@@ -5,11 +5,19 @@ from flask import jsonify
 import json
 import os
 app = Flask(__name__)
-
+import socket
+print(socket.gethostbyname(socket.gethostname()))
+# export FLASK_RUN_PORT=3000
 
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
+
+@app.route('/get_tasks/<string:student_id>', methods=['POST'])
+def get_tasks(student_id):
+    tasks, res = get_student_tasks(student_id)
+    return jsonify(tasks)
+
 
 
 @app.route('/images/<string:name>', methods=['GET'])
@@ -24,7 +32,11 @@ def post_tasks(task_path):
     :param task_path:
     :return: code of success
     '''
-    a = 0
+    task_map ,res = distribute_tasks(TASKS_FOLDER, STUDENTS_FOLDER)
+    if res < 1:
+        return 500
+    save_tasks(task_map, STUDENTS_FOLDER)
+    return 200
 
 @app.route('/lesson_content/<string:name>', methods=['GET'])
 def get_lesson_content(name):
@@ -43,5 +55,5 @@ def get_audio(name):
 
 
 if __name__ == '__main__':
-    print(get_speech('We are going to win!'))
+    # print(get_speech('We are going to win!'))
     app.run(host='0.0.0.0')
