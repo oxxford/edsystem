@@ -19,12 +19,20 @@ def get_tasks(student_id):
     print(res)
     return jsonify(tasks)
 
+@app.route('/get_student/<string:student_id>', methods=['GET'])
+def get_student_info(student_id):
+    student_filename = os.path.join(STUDENTS_FOLDER, student_id, f'{student_id}.json')
+    with open(student_filename) as file:
+        content = json.loads(file.read())
+    return jsonify(content)
 
 
-@app.route('/images/<string:name>', methods=['GET'])
-def get_image(name):
-    filename = './pictures/' + name
-    return send_file(filename, mimetype='image/jpg')
+@app.route('/get_media', methods=['GET'])
+def get_media():
+    path = request.args.get('path')
+    return send_file(path, mimetype='image/jpg')
+
+
 
 @app.route('/give_hometasks/', methods=['POST'])
 def post_tasks(task_path):

@@ -107,6 +107,8 @@ def get_student_tasks(student_id):
         tasks.append(task)
     return tasks, 1
 
+
+
 # students_folder = 'students/grade 1/A'
 # task_path = 'subjects/literature_4_2019/lesson1/tasks'
 # task_map, res = distribute_tasks(tasks_path=task_path, students_path=students_folder)
