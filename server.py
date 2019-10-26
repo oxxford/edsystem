@@ -1,5 +1,4 @@
 from flask import send_file, request, Flask
-from flask_cors import CORS
 from utils import get_speech
 from personalization import *
 from flask import jsonify
@@ -26,15 +25,25 @@ def get_tasks(student_id):
                     text = 'Variant ' + str(i) + '. ' + choice['content']
                     choice['content'] = '/audios/' + get_speech(text)
 
-    print(res)
     return jsonify(tasks)
 
+@app.route('/get_student/<string:student_id>', methods=['GET'])
+def get_student_info(student_id):
+    student_filename = os.path.join(STUDENTS_FOLDER, student_id, f'{student_id}.json')
+    with open(student_filename) as file:
+        content = json.loads(file.read())
+    return jsonify(content)
 
 
 @app.route('/get_media', methods=['GET'])
 def get_media():
     path = request.args.get('path')
     return send_file(path, mimetype='image/jpg')
+
+@app.route('/images/<string:name>', methods=['GET'])
+def get_image(name):
+    filename = './pictures/' + name
+    return send_file(filename, mimetype='image/jpg')
 
 @app.route('/give_hometasks/', methods=['POST'])
 def post_tasks(task_path):
