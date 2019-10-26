@@ -3,56 +3,42 @@
     {
       "id": 0,
       "content_type": "page",
-      "comment": "This is a square - a figure with equal edges and angles. Each angle equals 90 degrees.",
+      "comment": "Square is a parallelogram with equal sides. The formula of area of square is computed very simply: squared length of it's side. Or it can be computed differently: squared diameter divided by 2",
       "content": [
         {
           "type": "header",
-          "content": "Square area"
+          "content": "1. Area of square"
         },
         {
           "type": "image",
-          "content": "/subjects/literature_4_2019/lesson1/media/area.jpg"
+          "content": "/subjects/literature_4_2019/lesson1/media/square_area.png"
         }
       ]
     },
     {
       "id": 1,
-      "content_type": "page",
-      "comment": "This is teacher content bla bla bla",
-      "content": [
-        {
-          "type": "header",
-          "content": "Awesome math lesson 2"
-        },
-        {
-          "type": "video",
-          "content": "/statis/img/lesson_1/video_1.mp4"
-        },
-        {
-          "type": "text",
-          "content": "Blah blah"
-        }
-      ]
-    },
-    {
-      "id": 2,
       "content_type": "test",
-      "learner_type": "audio",
-      "test_type": "single_choice",
-      "question": "2+2=?",
+      "test_type": "multiple_choice",
+      "question": "How to compute area of square with side a and diameter d",
       "choices": [
         {
           "is_correct": true,
-          "content": "4"
+          "content": "S = a * a"
         },
         {
           "is_correct": false,
-          "content": "5"
+          "content": "S = 2 * a"
         },
         {
           "is_correct": false,
-          "content": "3"
+          "content": "S = 4 * a"
+        },
+        {
+          "is_correct": true,
+          "content": "S = 0.5 * d * d"
         }
+      ]
+    }
       ]
     }
   ]
