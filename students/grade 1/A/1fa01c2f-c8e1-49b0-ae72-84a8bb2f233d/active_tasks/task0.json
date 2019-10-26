@@ -45,7 +45,7 @@
     {
       "id": 2,
       "content_type": "test",
-      "learner_type": "audio",
+      "learner_type": "visual",
       "test_type": "single_choice",
       "question": "2+2=?",
       "choices": [

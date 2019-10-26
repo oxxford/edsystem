@@ -1,12 +1,12 @@
 from flask import send_file, request, Flask
+from flask_cors import CORS
 from utils import get_speech
 from personalization import *
 from flask import jsonify
 import json
 import os
 app = Flask(__name__)
-import socket
-print(socket.gethostbyname(socket.gethostname()))
+CORS(app)
 # export FLASK_RUN_PORT=3000
 
 @app.route('/')
@@ -19,11 +19,11 @@ def get_tasks(student_id):
     for task in tasks:
         for page in task['pages']:
             if page['learner_type'] == 'audio':
-                text = 'Question number ' + str(page['id']) + '. ' + page['question'] + ''
+                text = 'Question number ' + str(page['id']) + '. ' + page['question']
                 page['question'] = '/audios/' + get_speech(text)
 
-                for choice in page['choices']:
-                    text = 'Variant 1. ' + choice['content']
+                for i, choice in enumerate(page['choices']):
+                    text = 'Variant ' + str(i) + '. ' + choice['content']
                     choice['content'] = '/audios/' + get_speech(text)
 
     print(res)
@@ -31,10 +31,10 @@ def get_tasks(student_id):
 
 
 
-@app.route('/images/<string:name>', methods=['GET'])
-def get_image(name):
-    filename = './pictures/' + name
-    return send_file(filename, mimetype='image/jpg')
+@app.route('/get_media', methods=['GET'])
+def get_media():
+    path = request.args.get('path')
+    return send_file(path, mimetype='image/jpg')
 
 @app.route('/give_hometasks/', methods=['POST'])
 def post_tasks(task_path):
@@ -66,5 +66,5 @@ def get_audio(name):
 
 
 if __name__ == '__main__':
-    # print(get_speech('We are going to win!'))
+    # print(get_speech('We are <> going to win!'))
     app.run(host='0.0.0.0')
