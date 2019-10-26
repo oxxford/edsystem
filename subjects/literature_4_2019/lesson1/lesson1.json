@@ -11,7 +11,7 @@
         },
         {
           "type": "image",
-          "content": "/subjects/literature_4_2019/lesson1/media/square_area.png"
+          "content": "subjects/literature_4_2019/lesson1/media/square_area.png"
         }
       ]
     },
@@ -37,8 +37,6 @@
           "is_correct": true,
           "content": "S = 0.5 * d * d"
         }
-      ]
-    }
       ]
     }
   ]
