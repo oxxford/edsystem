@@ -13,9 +13,10 @@ print(socket.gethostbyname(socket.gethostname()))
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/get_tasks/<string:student_id>', methods=['POST'])
+@app.route('/get_tasks/<string:student_id>', methods=['GET'])
 def get_tasks(student_id):
     tasks, res = get_student_tasks(student_id)
+    print(res)
     return jsonify(tasks)
 
 

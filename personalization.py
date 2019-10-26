@@ -99,7 +99,7 @@ def get_student_tasks(student_id):
     active_tasks_paths = os.path.join(STUDENTS_FOLDER, student_id, 'active_tasks')
     if not os.path.exists(active_tasks_paths):
         return [], -1
-    task_filenames = glob.glob(active_tasks_paths)
+    task_filenames = glob.glob(active_tasks_paths + '/*')
     tasks = []
     for filename in task_filenames:
         with open(filename) as file:
