@@ -13,6 +13,15 @@ def get_image(name):
     filename = './pictures/' + name
     return send_file(filename, mimetype='image/jpg')
 
+@app.route('/give_hometasks', methods=['POST'])
+def post_tasks(task_path):
+    '''
+    task path: subjects/subject_name/lesson_name/tasks
+    :param task_path:
+    :return: code of success
+    '''
+
+
 
 @app.route('/audios/<string:name>', methods=['GET'])
 def get_audio(name):
