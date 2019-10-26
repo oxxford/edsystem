@@ -16,7 +16,15 @@ def hello_world():
 @app.route('/get_tasks/<string:student_id>', methods=['GET'])
 def get_tasks(student_id):
     tasks, res = get_student_tasks(student_id)
+    for task in tasks:
+        for page in task['pages']:
+            if page['learner_type'] == 'audio':
+                text = 'Question number ' + str(page['id']) + '. ' + page['question'] + ''
+                page['question'] = '/audios/' + get_speech(text)
 
+                for choice in page['choices']:
+                    text = 'Variant 1. ' + choice['content']
+                    choice['content'] = '/audios/' + get_speech(text)
 
     print(res)
     return jsonify(tasks)
