@@ -106,6 +106,6 @@ def get_audio():
 
 
 if __name__ == '__main__':
-    # print(get_speech('We are <> going to win!'))
-    # app.run(host='0.0.0.0')
+    # print(get_speech('To the door of an inn in the provincial town of N. there drew up a smart britchka—a light spring-carriage of the sort affected by bachelors, retired lieutenant-colonels, staff-captains, land-owners possessed of about a hundred souls, and, in short, all persons who rank as gentlemen of the intermediate category. In the britchka was seated such a gentleman—a man who, though not handsome, was not ill-favoured, not over-fat, and not over-thin. Also, though not over-elderly, he was not over-young. His arrival produced no stir in the town, and was accompanied by no particular incident, beyond that a couple of peasants who happened to be standing at the door of a dramshop exchanged a few comments with reference to the equipage rather than to the individual who was seated in it. “Look at that carriage,” one of them said to the other. “Think you it will be going as far as Moscow?” “I think it will,” replied his companion. “But not as far as Kazan, eh?” “No, not as far as Kazan.”'))
+    # \\app.run(host='0.0.0.0')
     socketio.run(app, host='0.0.0.0', debug=True)

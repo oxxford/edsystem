@@ -6,7 +6,8 @@
       "learner_type": "audio",
       "test_type": "single_choice",
       "question": "Name this literary work",
-      "media_content": "subjects/literature_4_2019/lesson1/media/e1.jpg",
+      "media_content": "https://www.youtube.com/watch?v=PfmXvepJkCc",
+      "media_type": "video",
       "choices": [
         {
           "is_correct": true,
@@ -18,11 +19,11 @@
         },
         {
           "is_correct": false,
-          "content": "\"The cherry orchard\" (Author A. Chekchov)"
+          "content": "\"The cherry orchard\" (Author A. Chekhov)"
         },
         {
           "is_correct": false,
-          "content": "\"Crime and punishment\" (Author F. Dostoevskiy)"
+          "content": "\"Crime and punishment\" (Author F. Dostoevsky)"
         }
       ]
     }
