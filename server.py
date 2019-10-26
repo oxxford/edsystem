@@ -1,5 +1,5 @@
 from flask import send_file, request, Flask
-from utils import get_speech
+from utils import get_speech, get_my_ip
 from personalization import *
 from flask import jsonify
 import json
@@ -29,8 +29,16 @@ def post_tasks(task_path):
 @app.route('/lesson_content/<string:name>', methods=['GET'])
 def get_lesson_content(name):
     lesson_filename = os.path.join(SUBJECT_FOLDER, name, f'{name}.json')
+    ip = get_my_ip()
     with open(lesson_filename) as file:
         lesson_content = json.loads(file.read())
+        """
+        for page in lesson_content['pages']:
+            print(page)
+            for content in page['content']:
+                if content['type'] == 'image' or content['type'] == 'audio' or content['type'] == 'video':
+                    content['content'] = 'http://' + ip + ':5000' + content['content']
+        """
     return jsonify(lesson_content)
 
 
@@ -43,5 +51,4 @@ def get_audio(name):
 
 
 if __name__ == '__main__':
-    print(get_speech('We are going to win!'))
     app.run(host='0.0.0.0')
