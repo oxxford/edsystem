@@ -3,7 +3,7 @@
     {
       "id": 0,
       "content_type": "test",
-      "learner_type": "visual",
+      "learner_type": "audio",
       "test_type": "single_choice",
       "question": "Name this literary work",
       "media_content": "subjects/literature_4_2019/lesson1/media/e1.jpg",

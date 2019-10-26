@@ -1,4 +1,5 @@
 from flask import send_file, request, Flask
+from flask_cors import CORS
 from utils import get_speech
 # import CORS
 from personalization import *
@@ -40,6 +41,7 @@ def redirect_canvas(message):
 
 #      REST FUNCTIONS
 
+
 @app.route('/')
 def hello_world():
     return 'Hello, World!'
@@ -75,12 +77,6 @@ def get_media():
     return send_file(path, mimetype='image/jpg')
 
 
-@app.route('/images/<string:name>', methods=['GET'])
-def get_image(name):
-    filename = './pictures/' + name
-    return send_file(filename, mimetype='image/jpg')
-
-
 @app.route('/give_hometasks/', methods=['POST'])
 def post_tasks(task_path):
     '''
@@ -103,10 +99,10 @@ def get_lesson_content(name):
     return jsonify(lesson_content)
 
 
-@app.route('/audios/<string:name>', methods=['GET'])
-def get_audio(name):
-    filename = './audio/' + name
-    return send_file(filename, mimetype='audio/mpeg')
+@app.route('/get_audio', methods=['GET'])
+def get_audio():
+    path = request.args.get('path')
+    return send_file(path, mimetype='audio/mpeg')
 
 
 if __name__ == '__main__':
