@@ -5,8 +5,7 @@ from flask import jsonify
 import json
 import os
 app = Flask(__name__)
-import socket
-print(socket.gethostbyname(socket.gethostname()))
+CORS(app)
 # export FLASK_RUN_PORT=3000
 
 @app.route('/')
@@ -16,7 +15,16 @@ def hello_world():
 @app.route('/get_tasks/<string:student_id>', methods=['GET'])
 def get_tasks(student_id):
     tasks, res = get_student_tasks(student_id)
-    print(res)
+    for task in tasks:
+        for page in task['pages']:
+            if page['learner_type'] == 'audio':
+                text = 'Question number ' + str(page['id']) + '. ' + page['question']
+                page['question'] = '/audios/' + get_speech(text)
+
+                for i, choice in enumerate(page['choices']):
+                    text = 'Variant ' + str(i) + '. ' + choice['content']
+                    choice['content'] = '/audios/' + get_speech(text)
+
     return jsonify(tasks)
 
 @app.route('/get_student/<string:student_id>', methods=['GET'])
@@ -32,7 +40,10 @@ def get_media():
     path = request.args.get('path')
     return send_file(path, mimetype='image/jpg')
 
-
+@app.route('/images/<string:name>', methods=['GET'])
+def get_image(name):
+    filename = './pictures/' + name
+    return send_file(filename, mimetype='image/jpg')
 
 @app.route('/give_hometasks/', methods=['POST'])
 def post_tasks(task_path):
@@ -64,5 +75,5 @@ def get_audio(name):
 
 
 if __name__ == '__main__':
-    # print(get_speech('We are going to win!'))
+    # print(get_speech('We are <> going to win!'))
     app.run(host='0.0.0.0')
