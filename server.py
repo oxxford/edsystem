@@ -1,5 +1,9 @@
 from flask import send_file, request, Flask
 from utils import get_speech
+from personalization import *
+from flask import jsonify
+import json
+import os
 app = Flask(__name__)
 
 
@@ -13,13 +17,22 @@ def get_image(name):
     filename = './pictures/' + name
     return send_file(filename, mimetype='image/jpg')
 
-@app.route('/give_hometasks', methods=['POST'])
+@app.route('/give_hometasks/', methods=['POST'])
 def post_tasks(task_path):
     '''
     task path: subjects/subject_name/lesson_name/tasks
     :param task_path:
     :return: code of success
     '''
+    a = 0
+
+@app.route('/lesson_content/<string:name>', methods=['GET'])
+def get_lesson_content(name):
+    lesson_filename = os.path.join(SUBJECT_FOLDER, name, f'{name}.json')
+    with open(lesson_filename) as file:
+        lesson_content = json.loads(file.read())
+    return jsonify(lesson_content)
+
 
 
 

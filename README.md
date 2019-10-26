@@ -51,5 +51,8 @@ These are requests samples that we will implement  (not final system version)
  1 - visual
  2 - audio
  
+ ## Types of tasks
+ - task_set
+ - variants
  
  
